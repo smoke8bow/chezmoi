@@ -16,6 +16,10 @@ func main() {
 		// Use stderr for error output and exit with a non-zero status code.
 		// Exit code 1 is used for general errors; specific exit codes may be
 		// returned by subcommands via cmd.ExitCodeError.
+		//
+		// Note: the error message intentionally includes the program name
+		// prefix ("chezmoi: error:") to make it easy to identify the source
+		// when chezmoi is invoked as part of a larger shell script.
 		fmt.Fprintf(os.Stderr, "chezmoi: error: %v\n", err)
 		os.Exit(1)
 	}
