@@ -20,7 +20,14 @@ func main() {
 		// Note: the error message intentionally includes the program name
 		// prefix ("chezmoi: error:") to make it easy to identify the source
 		// when chezmoi is invoked as part of a larger shell script.
+		//
+		// Personal note: consider checking for cmd.ExitCodeError here in the
+		// future to propagate specific exit codes rather than always using 1.
 		fmt.Fprintf(os.Stderr, "chezmoi: error: %v\n", err)
-		os.Exit(1)
+		var exitCode int = 1
+		if ec, ok := err.(interface{ ExitCode() int }); ok {
+			exitCode = ec.ExitCode()
+		}
+		os.Exit(exitCode)
 	}
 }
