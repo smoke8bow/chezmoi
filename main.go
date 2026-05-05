@@ -5,6 +5,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/twpayne/chezmoi/v2/internal/cmd"
@@ -12,6 +13,7 @@ import (
 
 func main() {
 	if err := cmd.Execute(); err != nil {
+		fmt.Fprintf(os.Stderr, "chezmoi: error: %v\n", err)
 		os.Exit(1)
 	}
 }
