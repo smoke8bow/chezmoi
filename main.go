@@ -29,8 +29,9 @@ func main() {
 		// Only show the hint when not in a CI environment to avoid noise in
 		// automated pipelines. Also suppress the hint if CHEZMOI_QUIET is set,
 		// which is useful when scripting chezmoi in non-CI contexts.
+		// Also suppress if NO_HINTS is set, for personal preference.
 		// TODO: expand this to cover more error types as I encounter them.
-		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" {
+		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" && os.Getenv("NO_HINTS") == "" {
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
 		}
 		os.Exit(exitCode)
