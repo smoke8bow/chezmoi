@@ -33,6 +33,7 @@ func main() {
 		// TODO: expand this to cover more error types as I encounter them.
 		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" && os.Getenv("NO_HINTS") == "" {
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
+			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor --verbose' for more detailed diagnostics\n")
 		}
 		os.Exit(exitCode)
 	}
