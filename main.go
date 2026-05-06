@@ -34,6 +34,7 @@ func main() {
 		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" && os.Getenv("NO_HINTS") == "" {
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor --verbose' for more detailed diagnostics\n")
+			fmt.Fprintf(os.Stderr, "chezmoi: hint: check the docs at https://www.chezmoi.io/user-guide/troubleshooting/\n")
 		}
 		os.Exit(exitCode)
 	}
