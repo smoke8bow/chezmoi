@@ -27,9 +27,10 @@ func main() {
 		}
 		// Print a hint for exit code 1 errors to help with debugging.
 		// Only show the hint when not in a CI environment to avoid noise in
-		// automated pipelines.
+		// automated pipelines. Also suppress the hint if CHEZMOI_QUIET is set,
+		// which is useful when scripting chezmoi in non-CI contexts.
 		// TODO: expand this to cover more error types as I encounter them.
-		if exitCode == 1 && os.Getenv("CI") == "" {
+		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" {
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
 		}
 		os.Exit(exitCode)
