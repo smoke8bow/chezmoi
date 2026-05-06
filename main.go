@@ -25,6 +25,11 @@ func main() {
 		if ec, ok := err.(interface{ ExitCode() int }); ok {
 			exitCode = ec.ExitCode()
 		}
+		// Also print a hint for common errors to help with debugging.
+		// TODO: expand this to cover more error types as I encounter them.
+		if exitCode == 1 {
+			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
+		}
 		os.Exit(exitCode)
 	}
 }
