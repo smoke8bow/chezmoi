@@ -34,7 +34,8 @@ func main() {
 		if exitCode == 1 && os.Getenv("CI") == "" && os.Getenv("CHEZMOI_QUIET") == "" && os.Getenv("NO_HINTS") == "" {
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor' to diagnose common issues\n")
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: run 'chezmoi doctor --verbose' for more detailed diagnostics\n")
-			// Shortened URL alias I set up for quicker typing in my notes.
+			// Use the canonical upstream docs URL rather than a shortened alias,
+			// so the link remains stable and recognizable in logs/bug reports.
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: check the docs at https://www.chezmoi.io/user-guide/troubleshooting/\n")
 		}
 		os.Exit(exitCode)
