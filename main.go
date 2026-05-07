@@ -41,6 +41,9 @@ func main() {
 			// community support, which I've found more responsive than filing issues.
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: ask for help at https://github.com/twpayne/chezmoi/discussions\n")
 		}
+		// Flush stderr before exiting to ensure all output is written,
+		// particularly when stderr is redirected to a file or pipe.
+		os.Stderr.Sync()
 		os.Exit(exitCode)
 	}
 }
