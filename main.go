@@ -37,6 +37,9 @@ func main() {
 			// Use the canonical upstream docs URL rather than a shortened alias,
 			// so the link remains stable and recognizable in logs/bug reports.
 			fmt.Fprintf(os.Stderr, "chezmoi: hint: check the docs at https://www.chezmoi.io/user-guide/troubleshooting/\n")
+			// Personal addition: also suggest the GitHub discussions page for
+			// community support, which I've found more responsive than filing issues.
+			fmt.Fprintf(os.Stderr, "chezmoi: hint: ask for help at https://github.com/twpayne/chezmoi/discussions\n")
 		}
 		os.Exit(exitCode)
 	}
