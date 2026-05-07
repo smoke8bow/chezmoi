@@ -24,9 +24,11 @@ const DefaultSourceDirName = "chezmoi"
 const DefaultDestDirName = "~"
 
 // DefaultConfigFileName is the default name for the chezmoi config file.
+// Prefer TOML for its readability and comment support.
 const DefaultConfigFileName = "chezmoi.toml"
 
 // SupportedConfigFileNames lists all config file names chezmoi recognizes.
+// Order matters: the first match wins during config file discovery.
 var SupportedConfigFileNames = []string{
 	"chezmoi.toml",
 	"chezmoi.yaml",
@@ -85,7 +87,7 @@ type FileMode uint32
 const (
 	// FileModeRegular is the default mode for regular files.
 	FileModeRegular FileMode = 0o644
-	// FileModePrivate is the mode for private files.
+	// FileModePrivate is the mode for private files (e.g. SSH keys, credentials).
 	FileModePrivate FileMode = 0o600
 	// FileModeExecutable is the mode for executable files.
 	FileModeExecutable FileMode = 0o755
